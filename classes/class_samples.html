@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // April 6, 2022 ; Wednesday (afternoon class)
+
+        // Sample No. 1
+        class Vehicle{
+
+            constructor(){
+                console.log(`The base vehicle`)
+            }
+            getPropulsion(){
+                return `gas powered`
+            }
+
+            // constructor(color){
+            //     console.log(`The car is color: ${color}`)
+            // }
+            displayType(){
+                console.log(`car`)
+            }
+        }
+
+        // "super" calls parent class
+
+        class Tesla extends Vehicle{
+            getPropulsion(){
+                return `Hybrid is ${super.getPropulsion()} and electric powered`
+            }
+        }
+
+        let tesla = new Tesla()
+
+        tesla.getPropulsion()
+
+        console.log(tesla.getPropulsion())
+
+
+        // let vehicle = new Vehicle()
+        // console.log(vehicle)
+        // console.log(typeof vehicle)
+        // console.log(vehicle instanceof Vehicle)
+
+        // vehicle.displayType()
+
+        // Topic: extends
+
+        // class Honda extends Vehicle{
+        //     constructor(color){
+        //         super(color)
+        //         console.log(`This is a honda vehicle`)
+        //     }
+        // }
+
+        // let honda = new Honda("blue")
+
+        // honda.displayType()
+
+        // Sample No. 2
+        class ParentVehicle{
+
+            constructor(brand,model,color,year){
+                this.brand = brand
+                this.model = model
+                this.color = color
+                this.year = year
+            }
+            getBrandModel(){
+                return `${this.brand} ${this.model}`
+            }
+            getCarAge(){
+                let currentDate = new Date().getFullYear() // not Static date
+                let age = currentDate - this.year
+                return `${age}`
+
+            }
+
+        }
+
+        class Car extends ParentVehicle{
+            getBrandModel(){
+                return `${super.getBrandModel()} calling ParentVehicle class`
+            }
+            getCarAge(){
+                return `this car's age is ${super.getCarAge()}`
+            }
+        }
+
+        let car = new Car("Toyota", "SUV", "red", "2015")
+
+        console.log(car.getBrandModel())
+        console.log(car.getCarAge())
+
+
+        // Sample No. 3
+        class Square{
+            constructor(width){
+                this.width = width
+            }
+            // height is a function
+            get height(){
+                return this.width
+
+            }
+            set height(height){
+                this.width = height
+                console.log(`Set a new height of ${this.height}`)
+
+            }
+            // another function
+            get area(){
+                return this.width * this.height
+            }
+
+        }
+
+        let square = new Square(4)
+        console.log(`Getting the height: ${square.height}`)
+        console.log(`Getting the area: ${square.area}`)
+
+        // Using set property
+        square.height = 5
+        console.log(`Getting the height: ${square.height}`)
+        console.log(`Getting the area: ${square.area}`)
+
+        square.height = 8
+        console.log(`Getting the height: ${square.height}`)
+        console.log(`Getting the area: ${square.area}`)
+
+        // End of April 6, 2022 coding class
+
+    </script>
+</body>
+</html>
